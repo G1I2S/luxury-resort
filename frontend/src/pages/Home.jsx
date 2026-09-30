@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import client from '../api/client';
 import RoomCard from '../components/RoomCard.jsx';
 
@@ -12,18 +11,8 @@ export default function Home() {
 
   return (
     <div>
-      <section className="hero">
-        <div className="hero__content">
-          <span className="hero__eyebrow">Luxury Resort</span>
-          <h1>Santuario Privado, Serenidad Absoluta</h1>
-          <p>
-            Villas y suites exclusivas, personalización a tu medida y una experiencia de hospedaje
-            diseñada en torno a ti.
-          </p>
-          <Link to="/habitaciones" className="btn btn--primary btn--lg">
-            Explorar villas
-          </Link>
-        </div>
+      <section className="hero hero--brand">
+        <h1 className="hero__brand-title">Luxury Resort</h1>
       </section>
 
       <section className="section">
