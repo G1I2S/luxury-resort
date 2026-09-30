@@ -172,16 +172,21 @@ a {
 }
 
 .hero--brand {
+  background: var(--bg);
   padding: 7rem 3rem;
 }
 
 .hero__brand-title {
   font-family: var(--font-heading);
-  font-size: 5.5rem;
+  font-size: 7.5rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--champagne);
   margin: 0;
+  background: linear-gradient(120deg, #e8cc94, #d4af6a 45%, #e0895a 75%, #d4af6a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 60px rgba(212, 175, 106, 0.35);
 }
 
 .hero h1 {
@@ -925,7 +930,7 @@ a {
   }
 
   .hero__brand-title {
-    font-size: 3rem;
+    font-size: 3.75rem;
   }
 
   .villa-layout,
