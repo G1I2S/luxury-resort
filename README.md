@@ -38,7 +38,7 @@ luxury-resort/
 │   │   ├── middleware/   # Autenticación JWT
 │   │   └── routes/       # Endpoints de la API
 │   └── database/         # Esquema SQL y datos de ejemplo
-└── fullstack/        # Frontend (React + Vite)
+└── frontend/         # Frontend (React + Vite)
     └── src/
         ├── api/          # Cliente HTTP
         ├── components/   # Componentes reutilizables
@@ -71,12 +71,17 @@ Configura `backend/.env` con tus credenciales de PostgreSQL.
 ### 3. Frontend
 
 ```bash
-cd fullstack
+cd frontend
 npm install
 npm run dev
 ```
 
 La app quedará disponible en `http://localhost:5173`.
+
+## Despliegue en producción
+
+- **Backend + base de datos:** en [Render](https://render.com), usando el Blueprint `backend/render.yaml` (New → Blueprint, seleccionar este repo). Crea automáticamente el servicio web y la base PostgreSQL, y conecta las variables de entorno entre ambos. Después hay que ejecutar `schema.sql` y `seed.sql` contra la base creada.
+- **Frontend:** en [Vercel](https://vercel.com), importando este repo con *Root Directory* = `frontend`. Configurar la variable `VITE_API_URL` apuntando a la URL pública del backend en Render (por ejemplo `https://luxury-resort-backend.onrender.com/api`).
 
 ## Endpoints principales de la API
 

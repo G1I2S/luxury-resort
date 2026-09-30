@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: luxury-resort-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: luxury-resort-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: luxury-resort-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: luxury-resort-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: luxury-resort-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: luxury-resort-db
+          property: password
+      - key: DB_SSL
+        value: "true"
+      - key: JWT_SECRET
+        generateValue: true
+
+databases:
+  - name: luxury-resort-db
+    plan: free
