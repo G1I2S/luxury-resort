@@ -1,0 +1,43 @@
+import { createContext, useContext, useState } from 'react';
+import client from '../api/client';
+
+const AuthContext = createContext(null);
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(() => {
+    const stored = localStorage.getItem('user');
+    return stored ? JSON.parse(stored) : null;
+  });
+
+  function persistSession(user, token) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    setUser(user);
+  }
+
+  async function login(email, password) {
+    const { data } = await client.post('/auth/login', { email, password });
+    persistSession(data.user, data.token);
+  }
+
+  async function register(name, email, password) {
+    const { data } = await client.post('/auth/register', { name, email, password });
+    persistSession(data.user, data.token);
+  }
+
+  function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUser(null);
+  }
+
+  return (
+    <AuthContext.Provider value={{ user, login, register, logout, isAuthenticated: !!user }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export function useAuth() {
+  return useContext(AuthContext);
+}
