@@ -12,6 +12,9 @@ export default function Navbar() {
 
   return (
     <header className="navbar">
+      <Link to="/" className="navbar__brand">
+        Luxury Resort
+      </Link>
       <nav className="navbar__links">
         <Link to="/habitaciones">Habitaciones</Link>
         {isAuthenticated ? (
